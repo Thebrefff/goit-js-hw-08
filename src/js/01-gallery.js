@@ -1,35 +1,63 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 // Add imports above this line
 import { galleryItems } from './gallery-items';
 // Change code below this line
 
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
-import '../css/common.css';
-import '../css/01-gallery.css';
+const galleryDiv = document.querySelector('div.gallery');
 
-const createItemsMarkup = galleryItems
-  .map(({ preview, original, description }) => {
-    return `
-    <a class="gallery__item" href="${original}">
-    <img class="gallery__image" src="${preview}" alt="${description}" />
-  </a>
-      `;
-  })
+const gallery = galleryItems
+  .map(
+    image =>
+      `<a class="gallery__item" href="${image.original}">
+  <img class="gallery__image" src="${image.preview}" alt="${image.description}" />
+</a>`
+  )
   .join('');
 
-const alleryContainerEl = document.querySelector('.gallery');
-alleryContainerEl.insertAdjacentHTML('beforeend', createItemsMarkup);
+galleryDiv.insertAdjacentHTML('afterbegin', gallery);
+
 let lightbox = new SimpleLightbox('.gallery a', {
-  scrollZoom: false,
-  captionDelay: 250,
+  captions: true,
   captionsData: 'alt',
-  doubleTapZoom: 1,
-});
-alleryContainerEl.addEventListener('click', event => {
-  event.preventDefault();
-  if (!event.target.classList.contains('gallery__image')) {
-    return;
-  }
+  captiondelay: 250,
 });
 
-//console.log(galleryItems);
+console.log(galleryItems);
+
+// // Add imports above this line
+// import { galleryItems } from './gallery-items';
+// // Change code below this line
+
+// import SimpleLightbox from 'simplelightbox';
+// import 'simplelightbox/dist/simple-lightbox.min.css';
+// import '../css/common.css';
+// import '../css/01-gallery.css';
+
+// const createItemsMarkup = galleryItems
+//   .map(({ preview, original, description }) => {
+//     return `
+//     <a class="gallery__item" href="${original}">
+//     <img class="gallery__image" src="${preview}" alt="${description}" />
+//   </a>
+//       `;
+//   })
+//   .join('');
+
+// const alleryContainerEl = document.querySelector('.gallery');
+// alleryContainerEl.insertAdjacentHTML('beforeend', createItemsMarkup);
+// let lightbox = new SimpleLightbox('.gallery a', {
+//   scrollZoom: false,
+//   captionDelay: 250,
+//   captionsData: 'alt',
+//   doubleTapZoom: 1,
+// });
+// alleryContainerEl.addEventListener('click', event => {
+//   event.preventDefault();
+//   if (!event.target.classList.contains('gallery__image')) {
+//     return;
+//   }
+// });
+
+// //console.log(galleryItems);
