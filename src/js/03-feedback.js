@@ -31,7 +31,7 @@ function onFormSubmit(e) {
     return alert('Please fill in all the fields!');
   }
 
-//   localStorage.removeItem(LOCAL_KEY);
-//   e.currentTarget.reset();
-//   dataForm = {};
+  localStorage.removeItem(LOCAL_KEY);
+  e.currentTarget.reset();
+  dataForm = {};
 }
